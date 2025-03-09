@@ -121,4 +121,32 @@ window.document.addEventListener("DOMContentLoaded", function main() {
       console.log(error);
     }
   });
+
+  $(".contactUs form").on("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+    try {
+      if (name || email || message) {
+        if (name.length >= 1 && email.length >= 1 && message.length >= 1) {
+          Swal.fire({
+            title: "Thank You",
+            icon: "success",
+            text: "Thank you for leaving us a message.",
+          });
+        } else {
+          Swal.fire({
+            title: "Empty Input",
+            icon: "info",
+            text: "Please provide all the input fields",
+          });
+        }
+      } else {
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });
